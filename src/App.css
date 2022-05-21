@@ -1,38 +1,74 @@
-.App {
-  text-align: center;
+@import url('https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;400;500&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Macondo&display=swap');
+
+* {
+    font-family: 'Roboto Mono', monospace;
 }
 
-.App-logo {
-  height: 40vmin;
-  pointer-events: none;
+.cards {
+    width: 100%;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-  .App-logo {
-    animation: App-logo-spin infinite 20s linear;
-  }
+.box {
+    width: 22%;
+    height: 93%;
+    display: flex !important;
+    flex-direction: row !important;
+    justify-content: center;
+    margin-top: 4vh;
 }
 
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
+.resp {
+    background-color: #2884b8;
+    background-image: linear-gradient(315deg, #2884b8 0%, #d1bad2 74%);
+    border-radius: 10px;
+    width: 21vw;
+    margin-bottom: 3vh;
+    justify-content: center;
+}
+
+.details {
+    border-radius: 8px;
+    font-weight: 600;
+    justify-content: center;
+    margin: auto;
+}
+
+/* Chrome, Safari, Edge, Opera */
+input::-webkit-outer-spin-button,
+input::-webkit-inner-spin-button {
+  -webkit-appearance: none;
+  margin: 0;
+}
+
+.nav__buttons{
+  text-decoration: none;
+  color: White;
+  margin-left: 3vw;
+  font-size: 1rem;
+}
+
+.css-o9k5xi-MuiInputBase-root-MuiOutlinedInput-root{
+  margin-top: 2.1vh;
+}
+
+.charts{
+  background-color: azure;
+  border-radius: 8px;
+  margin: 5vh auto;
+  width: 90vw;
+  height: 80vh;
+}
+
+.center h1{
   display: flex;
-  flex-direction: column;
-  align-items: center;
   justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
+  color: rgb(5, 12, 155) !important;
 }
 
-.App-link {
-  color: #61dafb;
-}
-
-@keyframes App-logo-spin {
-  from {
-    transform: rotate(0deg);
-  }
-  to {
-    transform: rotate(360deg);
-  }
+.cards{
+  display: grid !important;
+  grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important;
+  grid-gap: 20px !important;
+  justify-items: center;
 }
