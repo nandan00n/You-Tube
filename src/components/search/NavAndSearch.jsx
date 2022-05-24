@@ -54,7 +54,7 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
   },
 }));
 
-export default function SearchAppBar({Data}) {
+export default function SearchAppBar() {
 
     
     const [records, setRecords] = useState([]);
@@ -62,13 +62,20 @@ export default function SearchAppBar({Data}) {
     const [filteredData, setFilteredData] = useState();
     const [searchInput, setSearchInput] = useState('');
 
-    useEffect(() => {
-        const FetchedData = () => {
-            setRecords(Data.items)
-            // console.log(Data.items);
-          }
-          FetchedData()
-      }, [Data])
+    const getData = () => {
+      fetch('db.json')
+          .then(res => res.json())
+          .then(actualData => {
+            setRecords(actualData.items)
+              // console.log(actualData.items);
+          }).catch(error =>
+              console.log(error)
+          )
+  }
+
+  useEffect(() => {
+      getData()
+  }, []);
 
     const searchItems = (searchValue) => {
         setSearchInput(searchValue)
@@ -83,7 +90,6 @@ export default function SearchAppBar({Data}) {
             setFilteredData(records)
         }
     }
-
 
   return (
 <>
@@ -109,7 +115,7 @@ export default function SearchAppBar({Data}) {
           </Typography>
           <Search>
             <SearchIconWrapper>
-              <SearchIcon />
+              <SearchIcon sx={{color:'white'}}/>
             </SearchIconWrapper>
             <StyledInputBase
               placeholder="Search…"
