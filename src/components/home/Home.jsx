@@ -1,14 +1,15 @@
 import React from 'react'
-import Navbar from '../navbar/Navbar';
-import Search from '../search/Search';
+// import Navbar from '../navbar/Navbar';
+import NavAndSearch from '../search/NavAndSearch';
 import records from './db.json';
 
 const Home = () => {
 
   return (
       <>
-   <Navbar/>
-   <Search Data={records}/>
+   {/* <Navbar/> */}
+   {/* <Search Data={records}/> */}
+   <NavAndSearch Data={records}/>
       </>
   )
 }

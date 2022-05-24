@@ -15,7 +15,7 @@ export default function Cards({data}) {
 
   return (
     <>
-    <Card sx={{ maxWidth: 345 }}>
+    <Card sx={{ maxWidth: 345, marginTop:"10vh" }}>
       <a href={"https://www.youtube.com/watch?v=" + id.videoId} target="_blank">
       <CardMedia
         component="img"
