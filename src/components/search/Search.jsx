@@ -2,11 +2,7 @@ import React, { useEffect, useState } from 'react';
 import SearchIcon from '@mui/icons-material/Search';
 import InputBase from '@mui/material/InputBase';
 import { styled, alpha } from '@mui/material/styles';
-import BasicCard from '../card/Cards';
-import axios from 'axios';
-import Add from '../modal/Add';
-
-const url = "/database/db.json"
+import Cards from '../card/Cards';
 
 const Searchbar = styled('div')(({ theme }) => ({
     position: 'relative',
@@ -49,47 +45,34 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
     },
 }));
 
-const Search = ({chartgraph}) => {
-
-    // console.log(setCardData.Policy_id, "hhhereee");
+const Search = ({Data}) => {
 
     const [records, setRecords] = useState([]);
+    // console.log(records);
     const [filteredData, setFilteredData] = useState();
     const [searchInput, setSearchInput] = useState('');
 
-    const getData = async () => {
-        try {
-            await axios.get(url)
-                .then((res) => setRecords(res.data))
-        } catch (err) {
-            console.log(err)
-        }
-    }
     useEffect(() => {
-        getData();
-    }, []);
+        const FetchedData = () => {
+            setRecords(Data.items)
+            // console.log(Data.items);
+          }
+          FetchedData()
+      }, [Data])
 
     const searchItems = (searchValue) => {
         setSearchInput(searchValue)
         if (searchInput !== "") {
             // eslint-disable-next-line
             const filteredRecords = records.filter(data => {
-                if (data.Policy_id.toString().startsWith(searchValue))
-                    return data
+                    return data.snippet.title.toLowerCase().includes(searchValue.toLowerCase()) 
             })
-            // console.log(filteredRecords)
+            console.log(filteredRecords)
             setFilteredData(filteredRecords)
         } else {
             setFilteredData(records)
         }
     }
-
-    useEffect(() => {
-        const chartData = () => {
-            setFilteredData(chartgraph)
-          }
-          chartData()
-      }, [chartgraph])
 
     return (
         <>
@@ -102,27 +85,26 @@ const Search = ({chartgraph}) => {
                             inputProps={{ 'aria-label': 'search' }}
                             onChange={(e) => searchItems(e.target.value)}
                         />
-                      <Add />
                     </Searchbar>
                     
             <div className='cards'>
 
                 {searchInput.length > 1 ? (
-                    filteredData.map((data) => {
+                    filteredData.map((data, index) => {
                         return (
-                            <BasicCard
-                                key={data.Policy_id}
+                            <Cards
+                                key={index}
                                 data={data}
                             />
                         )
                     })
                 ) : (
-                    records.map((data) => {
+                    records.map((data, index) => {
                         return (
-                            <BasicCard
-                                key={data.Policy_id}
-                                data={data}
-                            />
+                            <Cards
+                            key={index}
+                            data={data}
+                        />
                         )
                     })
                 )
