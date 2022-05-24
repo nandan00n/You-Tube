@@ -20,7 +20,7 @@ export default function ButtonAppBar() {
           >
           </IconButton>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 , fontWeight:"600"}}>
-           Tube-Tube
+           YouTube
           </Typography>
         </Toolbar>
       </AppBar>
