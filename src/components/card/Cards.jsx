@@ -4,7 +4,7 @@ import CardContent from '@mui/material/CardContent';
 import CardMedia from '@mui/material/CardMedia';
 import Typography from '@mui/material/Typography';
 
-export default function Cards({data}) {
+export default function Cards({data, input}) {
 // console.log(data);
     const {
       snippet,
@@ -14,14 +14,24 @@ export default function Cards({data}) {
   return (
     <>
     <Card sx={{ maxWidth: 345, marginTop:"10vh" }}>
-      <a href={"https://www.youtube.com/watch?v=" + id.videoId} rel="noreferrer" target="_blank">
+      {input.length > 1 ? ( <a href={"https://www.youtube.com/watch?v=" + id.videoId} rel="noreferrer" target="_blank">
       <CardMedia
         component="img"
         height="140"
         image={snippet.thumbnails.medium.url}
         alt="green iguana"
         />
-      </a>
+      </a>):
+      (
+        <CardMedia
+        component="img"
+        height="140"
+        image={snippet.thumbnails.medium.url}
+        alt="green iguana"
+        />
+      )
+      }
+     
      
       <CardContent>
         <Typography gutterBottom variant="h5" component="div">

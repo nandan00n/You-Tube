@@ -135,6 +135,7 @@ export default function SearchAppBar() {
             <Cards
                 key={index}
                 data={data}
+                input={searchInput}
             />
         )
     })
@@ -144,6 +145,7 @@ export default function SearchAppBar() {
             <Cards
             key={index}
             data={data}
+            input={searchInput}
         />
         )
     })
